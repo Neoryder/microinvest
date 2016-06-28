@@ -43,7 +43,11 @@ public class OrderResource {
 
         Spark.put(API_CONTEXT + "/orderz/:id", "application/json", (request, response)
 
-                -> orderService.update(request.params(":id"), request.body()), new JsonTransformer());
+                -> {orderService.remove(request.params(":id"));
+                    response.status(201);
+                    return response;
+                }, new JsonTransformer());
+                
     }
 
 

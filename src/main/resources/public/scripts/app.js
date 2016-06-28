@@ -1,8 +1,18 @@
-﻿(function () {
+(function () {
     'use strict';
 
     var app = angular
-        .module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngMockE2E'])
+        .module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngMockE2E',
+          'mobile-angular-ui',
+  
+          // touch/drag feature: this is from 'mobile-angular-ui.gestures.js'
+          // it is at a very beginning stage, so please be careful if you like to use
+          // in production. This is intended to provide a flexible, integrated and and 
+          // easy to use alternative to other 3rd party libs like hammer.js, with the
+          // final pourpose to integrate gestures into default ui interactions like 
+          // opening sidebars, turning switches on/off ..
+          'mobile-angular-ui.gestures',
+          'ngMaterial'])
         .config(config)
         .run(run);
 
@@ -34,6 +44,16 @@
                 templateUrl:  'views/order/create.html',
                 controller: 'OrderCreateCtrl'
             })
+            .state('grouporderlist', {
+                url: '/gorder/list',
+                templateUrl:  'views/grouporder/list.html',
+                controller: 'GroupOrderListCtrl'
+            })
+            .state('groupordercreate', {
+                url: '/gorder/create',
+                templateUrl:  'views/grouporder/create.html',
+                controller: 'GroupOrderCreateCtrl'
+            })
             .state('traderconsole', {
                 url: '/trader/view',
                 templateUrl:  'views/trader/view.html',
@@ -53,6 +73,9 @@
         $httpBackend.whenGET('/api/v1/trader').passThrough();
         $httpBackend.whenGET('/api/v1/orderzSummary').passThrough();
         $httpBackend.whenPOST('/api/v1/orderz').passThrough();
+        $httpBackend.whenPUT(/\/api\/v1\/orderz\/(.+)/).passThrough();
+        $httpBackend.whenGET('/api/v1/gorder').passThrough();
+        $httpBackend.whenPOST('/api/v1/gorder').passThrough();
         $httpBackend.whenPOST('/api/v1/trader').passThrough();
 
         // keep user logged in after page refresh
@@ -70,7 +93,7 @@
         });
     }
     
-    app.controller('OrderCreateCtrl', function ($scope, $http, $location) {
+    app.controller('OrderCreateCtrl', function ($scope, $http, $location, $filter) {
         $scope.order = {
             done: false,
             type: 'buy',
@@ -84,13 +107,13 @@
         
         $scope.$watch('order.total', function(newVal, oldVal) {
             if($scope.order.type == 'buy') {
-                $scope.order.quantity = newVal/$scope.order.price/1.005;
+                $scope.order.quantity = $filter('number')(newVal/$scope.order.price/1.005, 2);
             }
         });
         
         $scope.$watch('order.quantity', function(newVal, oldVal) {
             if($scope.order.type == 'sell') {
-                $scope.order.total = newVal*$scope.order.price*0.99;
+                $scope.order.total = $filter('number')(newVal*$scope.order.price*0.99, 2);
             }
         });
         
@@ -100,27 +123,73 @@
         };
         
         $scope.createOrder = function () {
-            alert($scope.order);
             console.log($scope.order);
             $http.post('/api/v1/orderz', $scope.order).success(function (data) {
                 $location.path('/orderz/list');
             }).error(function (data, status) {
                 console.log('Error ' + data);
-                alert('Error ' + data);
             })
         }
     });
     
     app.controller('OrderListCtrl', function ($scope, $http) {
+        
         $http.get('/api/v1/orderz').success(function (data) {
             $scope.trans = data;
         }).error(function (data, status) {
             console.log('Error ' + data);
         });
         
-        $scope.todoStatusChanged = function (orderz) {
-            console.log(orderz);
-            $http.put('/api/v1/orderz/' + orderz.id, orderz).success(function (data) {
+        $scope.deleteOrder = function (tran) {
+            console.log(tran);
+            $http.put('/api/v1/orderz/' + tran.id, tran).success(function (data) {
+                console.log('deleted order');
+                
+                // temporary reload - possible cleaner code
+                $http.get('/api/v1/orderz').success(function (data) {
+                    $scope.trans = data;
+                }).error(function (data, status) {
+                    console.log('Error ' + data)
+                });
+                
+            }).error(function (data, status) {
+                console.log('Error ' + data)
+            })
+        }
+        
+    });
+    
+    app.controller('GroupOrderCreateCtrl', function ($scope, $http, $location, $filter) {
+        $scope.gorder = {
+            done: false,
+            type: 'buy',
+            stock: 'MEG',
+            price: '4.53',
+            cash: '77.00',
+            quantity: '',
+            amountInBucket: ''
+        };
+        
+        $scope.createGroupOrder = function () {
+            console.log($scope.gorder);
+            $http.post('/api/v1/gorder', $scope.gorder).success(function (data) {
+                $location.path('/gorder/list');
+            }).error(function (data, status) {
+                console.log('Error ' + data)
+            })
+        }
+    });
+    
+    app.controller('GroupOrderListCtrl', function ($scope, $http) {
+        $http.get('/api/v1/gorder').success(function (data) {
+            $scope.gorders = data;
+        }).error(function (data, status) {
+            console.log('Error ' + data)
+        });
+        
+        $scope.todoStatusChanged = function (gorder) {
+            console.log(gorder);
+            $http.put('/api/v1/gorder/' + gorder.id, gorder).success(function (data) {
                 console.log('status changed');
             }).error(function (data, status) {
                 console.log('Error ' + data);

@@ -1,55 +1,64 @@
-    <table class="table table-hover">
-        <tr>
-            <th>
-                #
-            </th>
-            <th>
-                STOCK
-            </th>
-            <th>
-                TRANSACTION TYPE
-            </th>
-            <th>
-                QUANTITY
-            </th>
-            <th>
-                PRICE
-            </th>
-            <th>
-                TOTAL COST
-            </th>
-            <th>
-                BUYING POWER
-            </th>
-        </tr>
-        <tr class="success-{{tran.done}}" ng-repeat="tran in trans">
-            <td>{{$index+1}}</td>
-            <td>
-                {{tran.stock}}
-            </td>
-            <td>
-                {{tran.type}}
-            </td>
-            <td>
-                {{tran.quantity}}
-            </td>
-            <td>
-                {{tran.price}}
-            </td>
-            <td>
-                {{tran.total}}
-            </td>
-            <td>
-                <input type="text" class="form-control" id="title" ng-model="buyingPower">
-            </td>
-        </tr>
-    </table>
+<div class="scrollable">
+<div class="scrollable-content">
+    <div class="container-fluid section section-break" id="traderView">
 
-
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    #
+                </th>
+                <th>
+                    STOCK
+                </th>
+                <th>
+                    TRANSACTION TYPE
+                </th>
+                <th>
+                    QUANTITY
+                </th>
+                <th>
+                    PRICE
+                </th>
+                <th>
+                    TOTAL COST
+                </th>
+                <th>
+                    BUYING POWER
+                </th>
+            </tr>
+            <tr class="success-{{tran.done}}" ng-repeat="tran in trans">
+                <td>{{$index+1}}</td>
+                <td>
+                    {{tran.stock}}
+                </td>
+                <td>
+                    {{tran.type}}
+                </td>
+                <td>
+                    {{tran.quantity}}
+                </td>
+                <td>
+                    {{tran.price}}
+                </td>
+                <td>
+                    {{tran.total}}
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="title" ng-model="buyingPower">
+                </td>
+            </tr>
+        </table>
     
-    <div class="form-group  cellupperline">
-        <div class="col-sm-offset-2 col-sm-10">
-            <a class="btn btn-primary pull-right" href="#/orderz/fill"><i
-                    class="icon-plus-sign icon-white"></i>Fill Order</a>
+    
+        
+        <div class="form-group  cellupperline">
+            <div class="col-sm-offset-2 col-sm-10">
+                <a class="btn btn-primary pull-right" href="#/orderz/fill"><i
+                        class="icon-plus-sign icon-white"></i>Fill Order</a>
+            </div>
         </div>
+        
     </div>
+</div>
+</div>
+    

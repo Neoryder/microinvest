@@ -1,43 +1,37 @@
-<h2>Group Holdings <a class="btn btn-primary pull-right" href="#/gholdings/create"><i
-        class="icon-plus-sign icon-white"></i>Add Group HOldings</a></h2>
+<div class="scrollable">
+<div class="scrollable-content">
+    <div class="container-fluid section section-break" id="gholdingsList">
 
-<table class="table table-hover">
-    <tr>
-        <th>
-            #
-        </th>
-        <th>
-            STOCK
-        </th>
-        <th>
-            SHARES
-        </th>
-        <th>
-            MKT VALUE
-        </th>
-        <th>TOTAL COST</th>
-        <th>PROFIT/LOSS</th>
-        <th>%P/L</th>
-    </tr>
-    <tr class="success-{{todo.done}}" ng-repeat="todo in todos">
-        <td>{{$index+1}}</td>
-        <td>
-            {{todo.title}}
-        </td>
-        <td>
-             
-        </td>
-        <td>
-            
-        </td>
-        <td>
-            
-        </td>
-        <td>
-            
-        </td>
-        <td>
-            
-        </td>
-    </tr>
-</table>
+        <h2>Group Holdings <a class="btn btn-primary pull-right" href="#/gholdings/create"><i
+                class="icon-plus-sign icon-white"></i>Add Group HOldings</a></h2>
+        
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    STOCK
+                </th>
+                <th>
+                    SHARES
+                </th>
+                <th>
+                    MKT VALUE
+                </th>
+                <th>TOTAL COST</th>
+                <th>PROFIT/LOSS</th>
+                <th>%P/L</th>
+            </tr>
+            <tr class="success-{{todo.done}}" ng-repeat="todo in todos">
+                <td>
+                    {{todo.title}}
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+</div>

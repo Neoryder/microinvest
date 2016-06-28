@@ -1,56 +1,64 @@
-<form class="form-horizontal" role="form" ng-submit="createUser()">
-    <div class="form-group">
-        <label for="username" class="col-sm-2 control-label">Username: </label>
+<div class="scrollable">
+<div class="scrollable-content">
+    <div class="container-fluid section section-break" id="userCreate">
 
-        <div class="col-sm-10" >
-            <input type="text" class="form-control" id="title" placeholder="Input Username" ng-model="user.username">
-        </div>
-
-        <label for="email" class="col-sm-2 control-label">Email: </label>
-        <div class="col-sm-10" >
-            <input type="text" class="form-control" id="email" placeholder="Input Email" ng-model="user.email">
-        </div>
-
-        <label for="contactNumber" class="col-sm-2 control-label">Contact Number: </label>
-        <div class="col-sm-10" >
-            <input type="text" class="form-control" id="contactNumber" placeholder="Input Contact Number" ng-model="user.contactNumber">
-        </div>
-
-        <label for="firstName" class="col-sm-2 control-label">First Name: </label>
-        <div class="col-sm-10" >
-            <input type="text" class="form-control" id="firstName" placeholder="Input First Name" ng-model="user.firstName">
-        </div>
-
-        <label for="lastName" class="col-sm-2 control-label">Last Name: </label>
-        <div class="col-sm-10" >
-            <input type="text" class="form-control" id="lastName" placeholder="Input Last Name" ng-model="user.lastName">
-        </div>
-
-        <label for="middleName" class="col-sm-2 control-label">Middle Name: </label>
-        <div class="col-sm-10" >
-            <input type="text" class="form-control" id="middleName" placeholder="Input Last Name" ng-model="user.middleName">
-        </div>
-
-        <label for="idNumber" class="col-sm-2 control-label">ID Number: </label>
-        <div class="col-sm-10" >
-            <input type="text" class="form-control" id="idNumber" placeholder="Input ID Number" ng-model="user.idNumber">
-        </div>
-
-        <label for="idType" class="col-sm-2 control-label">ID Type: </label>
-        <div class="col-sm-10" >
-            <input type="text" class="form-control" id="idType" placeholder="Input Type" ng-model="user.idType">
-            <select id="idType" class="form-control" ng-model="user.idType">
-                <option id="UMID">UMID</option>
-                <option id="SSS">SSS</option>
-                <option id="GSIS">GSIS</option>
-                <option id="PASSPORT">PASSPORT</option>
-            </select>
-        </div>
-
+        <form class="form-horizontal" role="form" ng-submit="createUser()">
+            <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">Username: </label>
+        
+                <div class="col-sm-10" >
+                    <input type="text" class="form-control" id="title" placeholder="Input Username" ng-model="user.username">
+                </div>
+        
+                <label for="email" class="col-sm-2 control-label">Email: </label>
+                <div class="col-sm-10" >
+                    <input type="text" class="form-control" id="email" placeholder="Input Email" ng-model="user.email">
+                </div>
+        
+                <label for="contactNumber" class="col-sm-2 control-label">Contact Number: </label>
+                <div class="col-sm-10" >
+                    <input type="text" class="form-control" id="contactNumber" placeholder="Input Contact Number" ng-model="user.contactNumber">
+                </div>
+        
+                <label for="firstName" class="col-sm-2 control-label">First Name: </label>
+                <div class="col-sm-10" >
+                    <input type="text" class="form-control" id="firstName" placeholder="Input First Name" ng-model="user.firstName">
+                </div>
+        
+                <label for="lastName" class="col-sm-2 control-label">Last Name: </label>
+                <div class="col-sm-10" >
+                    <input type="text" class="form-control" id="lastName" placeholder="Input Last Name" ng-model="user.lastName">
+                </div>
+        
+                <label for="middleName" class="col-sm-2 control-label">Middle Name: </label>
+                <div class="col-sm-10" >
+                    <input type="text" class="form-control" id="middleName" placeholder="Input Last Name" ng-model="user.middleName">
+                </div>
+        
+                <label for="idNumber" class="col-sm-2 control-label">ID Number: </label>
+                <div class="col-sm-10" >
+                    <input type="text" class="form-control" id="idNumber" placeholder="Input ID Number" ng-model="user.idNumber">
+                </div>
+        
+                <label for="idType" class="col-sm-2 control-label">ID Type: </label>
+                <div class="col-sm-10" >
+                    <input type="text" class="form-control" id="idType" placeholder="Input Type" ng-model="user.idType">
+                    <select id="idType" class="form-control" ng-model="user.idType">
+                        <option id="UMID">UMID</option>
+                        <option id="SSS">SSS</option>
+                        <option id="GSIS">GSIS</option>
+                        <option id="PASSPORT">PASSPORT</option>
+                    </select>
+                </div>
+        
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Create a User</button>
+                </div>
+            </div>
+        </form>
+        
     </div>
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default">Create a User</button>
-        </div>
-    </div>
-</form>
+</div>
+</div>

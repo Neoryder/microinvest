@@ -33,16 +33,26 @@ public class GroupOrderService {
     }
 
     public void createNewGroupOrder(String body) {
-        System.out.println("createNewHoldings");
-        GroupOrder groupOrder = new Gson().fromJson(body, GroupOrder.class);
-        collection.insert(new BasicDBObject("title", groupOrder.getTitle()).append("done", groupOrder.isDone()).append("createdOn", new Date()));
+
+        GroupOrder gorder = new Gson().fromJson(body, GroupOrder.class);
+        System.out.println("createNewGroupOrder");
+	
+        System.out.println(body);
+        
+        collection.insert(new BasicDBObject("title", gorder.getType())
+            .append("stock", gorder.getStock()).append("type", gorder.getType())
+            .append("amountInBucket", gorder.getAmountInBucket().toPlainString())
+            .append("price", gorder.getPrice().toPlainString())
+            .append("done", gorder.isDone()).append("createdOn", new Date()));
+            
     }
+    
 
     public GroupOrder find(String id) {
         System.out.println("find");
         return new GroupOrder((BasicDBObject) collection.findOne(new BasicDBObject("_id", new ObjectId(id))));
     }
-
+    
     public GroupOrder update(String groupOrderId, String body) {
         System.out.println("update");
         GroupOrder groupOrder = new Gson().fromJson(body, GroupOrder.class);

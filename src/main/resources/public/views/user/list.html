@@ -1,64 +1,72 @@
-<h2>User <a class="btn btn-primary pull-right" href="#/user/create"><i
-        class="icon-plus-sign icon-white">Register a User</i></a></h2>
+<div class="scrollable">
+<div class="scrollable-content">
+    <div class="container-fluid section section-break" id="userList">
 
-<table class="table table-hover">
-    <tr>
-        <th> 
-		
-		# 
-		
-		</th>
-        <th> 
-		
-		USERNAME 
-		
-		</th>
-        <th> 
-		
-		FIRSTNAME 
-		
-		</th>
-        <th> 
-		
-		LASTNAME 
-		
-		</th>
-		<th> 
-		
-		MIDDLENAME 
-		
-		</th>
-        <th> 
-		
-		MOBILE NUMBER 
-		
-		</th>
-        <th>
-		
-		EMAIL 
-		
-		</th>
+        <h2>User <a class="btn btn-primary pull-right" href="#/user/create"><i
+                class="icon-plus-sign icon-white">Register a User</i></a></h2>
         
-    </tr>
-    <tr class="success-{{user.done}}" ng-repeat="user in users">
-        <td>{{$index+1}}</td>
-        <td>
-            {{user.username}}
-        </td>
-        <td>
-            {{user.firstName}}
-        </td>
-        <td>
-            {{user.lastName}}
-        </td>
-        <td>
-            {{user.middleName}}
-        </td>
-        <td>
-            {{user.contactNumber}}
-        </td>
-        <td>
-            {{user.email}}
-        </td>
-    </tr>
-</table>
+        <table class="table table-hover">
+            <tr>
+                <th> 
+        		
+        		# 
+        		
+        		</th>
+                <th> 
+        		
+        		USERNAME 
+        		
+        		</th>
+                <th> 
+        		
+        		FIRSTNAME 
+        		
+        		</th>
+                <th> 
+        		
+        		LASTNAME 
+        		
+        		</th>
+        		<th> 
+        		
+        		MIDDLENAME 
+        		
+        		</th>
+                <th> 
+        		
+        		MOBILE NUMBER 
+        		
+        		</th>
+                <th>
+        		
+        		EMAIL 
+        		
+        		</th>
+                
+            </tr>
+            <tr class="success-{{user.done}}" ng-repeat="user in users">
+                <td>{{$index+1}}</td>
+                <td>
+                    {{user.username}}
+                </td>
+                <td>
+                    {{user.firstName}}
+                </td>
+                <td>
+                    {{user.lastName}}
+                </td>
+                <td>
+                    {{user.middleName}}
+                </td>
+                <td>
+                    {{user.contactNumber}}
+                </td>
+                <td>
+                    {{user.email}}
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+</div>
