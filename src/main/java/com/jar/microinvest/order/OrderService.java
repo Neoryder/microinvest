@@ -36,21 +36,6 @@ public class OrderService {
     public void createNewOrder(String body) {
 
         Order order = new Gson().fromJson(body, Order.class);
-        System.out.println("createOrUpdateGroupOrder");
-        
-        BasicDBObject newDocument = new BasicDBObject();
-    	newDocument.append("$set", new BasicDBObject().append("stock", order.getStock()))
-    	    .append("$set", new BasicDBObject().append("type", order.getType()))
-    	    .append("$set", new BasicDBObject().append("stockPrice", order.getPrice().toPlainString()))
-    	    //.append("$inc", new BasicDBObject().append("amountInBucket", order.getTotal().toPlainString()))
-    	    .append("$set", new BasicDBObject().append("done", false));
-    	
-    	BasicDBObject searchQuery = new BasicDBObject()
-        	.append("stock", order.getStock())
-        	.append("type", order.getType())
-        	.append("done", false);
-    
-    	gorderCollection.update(searchQuery, newDocument);
 	
         System.out.println("createNewOrder");
         System.out.println(body);

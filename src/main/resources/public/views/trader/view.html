@@ -5,29 +5,25 @@
         <table class="table table-hover">
             <tr>
                 <th>
-                    #
+                    STK
                 </th>
                 <th>
-                    STOCK
+                    TYP
                 </th>
                 <th>
-                    TRANSACTION TYPE
+                    QTY
                 </th>
                 <th>
-                    QUANTITY
+                    PRC
                 </th>
                 <th>
-                    PRICE
+                    TOTAL
                 </th>
                 <th>
-                    TOTAL COST
-                </th>
-                <th>
-                    BUYING POWER
+                    ACT
                 </th>
             </tr>
             <tr class="success-{{tran.done}}" ng-repeat="tran in trans">
-                <td>{{$index+1}}</td>
                 <td>
                     {{tran.stock}}
                 </td>
@@ -41,10 +37,12 @@
                     {{tran.price}}
                 </td>
                 <td>
+                    <md-progress-circular class="md-primary md-hue-1" md-mode="determinate" md-diameter="20"
+                        value={{tran.total/8000*100}}></md-progress-circular>
                     {{tran.total}}
                 </td>
                 <td>
-                    <input type="text" class="form-control" id="title" ng-model="buyingPower">
+                    b/s/c
                 </td>
             </tr>
         </table>
