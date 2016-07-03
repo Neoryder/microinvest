@@ -14,7 +14,7 @@
         return service;
 
         function Login(username, password, callback) {
-            $http.post('/api/authenticate', { username: username, password: password })
+            $http.post('http://userapi-rainnier.rhcloud.com/api/authenticate', { name: username, password: password })
                 .success(function (response) {
                     // login successful if there's a token in the response
                     if (response.token) {
@@ -31,6 +31,7 @@
                         callback(false);
                     }
                 });
+                
         }
 
         function Logout() {

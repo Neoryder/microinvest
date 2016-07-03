@@ -2,7 +2,7 @@
     'use strict';
 
     var app = angular
-        .module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngMockE2E',
+        .module('app', ['ui.router', 'ngMessages', 'ngStorage',
           'mobile-angular-ui',
   
           // touch/drag feature: this is from 'mobile-angular-ui.gestures.js'
@@ -66,18 +66,8 @@
             });
     }
 
-    function run($rootScope, $http, $location, $localStorage, $httpBackend, $timeout) {
+    function run($rootScope, $http, $location, $localStorage, $timeout) {
         
-        $httpBackend.whenGET(/\.html$/).passThrough();
-        $httpBackend.whenGET('/api/v1/orderz').passThrough();
-        $httpBackend.whenGET('/api/v1/trader').passThrough();
-        $httpBackend.whenGET('/api/v1/orderzSummary').passThrough();
-        $httpBackend.whenPOST('/api/v1/orderz').passThrough();
-        $httpBackend.whenPUT(/\/api\/v1\/orderz\/(.+)/).passThrough();
-        $httpBackend.whenGET('/api/v1/gorder').passThrough();
-        $httpBackend.whenPOST('/api/v1/gorder').passThrough();
-        $httpBackend.whenPOST('/api/v1/trader').passThrough();
-
         // keep user logged in after page refresh
         if ($localStorage.currentUser) {
             $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.currentUser.token;
